@@ -20,6 +20,7 @@ function LoginForm() {
   const [formError, setFormError] = useState('')
   const router = useRouter()
   const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') ?? '/staff'
   const error = searchParams.get('error')
 
   const handleSubmit = async (e) => {
@@ -31,6 +32,7 @@ function LoginForm() {
       redirect: false,
       email,
       password,
+      callbackUrl,
     })
 
     setLoading(false)
@@ -43,7 +45,7 @@ function LoginForm() {
     }
 
     toast.success('Logged in!')
-    router.push('/staff')
+    router.push(callbackUrl)
   }
 
   return (
