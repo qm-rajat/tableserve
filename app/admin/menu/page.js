@@ -1,10 +1,9 @@
 'use client'
 // app/admin/menu/page.js — Admin menu management
 import { useEffect, useState } from 'react'
-import { FiPlus, FiTrash2, FiEdit2, FiUploadCloud, FiSearch, FiFilter, FiCheck, FiX } from 'react-icons/fi'
+import { FiPlus, FiTrash2, FiEdit2, FiUploadCloud, FiSearch, FiFilter, FiCheck, FiX, FiImage } from 'react-icons/fi'
 import toast from 'react-hot-toast'
 import Image from 'next/image'
-import { motion, AnimatePresence } from 'framer-motion'
 
 export default function AdminMenuPage() {
   const [items,      setItems]      = useState([])
@@ -134,8 +133,9 @@ export default function AdminMenuPage() {
   )
 
   return (
-    <div className="p-4 sm:p-8 max-w-6xl mx-auto">
-      <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
+    <main className="p-8 flex-1">
+      <div className="p-4 sm:p-8 max-w-6xl mx-auto">
+        <header className="flex flex-col sm:flex-row sm:items-center justify-between gap-6 mb-12">
         <div>
           <h1 className="text-3xl font-display font-black text-stone-800">Menu Management</h1>
           <p className="text-stone-500 text-sm">Create and organize your cafe's delights</p>
@@ -184,9 +184,8 @@ export default function AdminMenuPage() {
 
       {/* Items Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <AnimatePresence mode="popLayout">
           {filteredItems.map(item => (
-            <motion.div 
+            <div 
               layout
               key={item.id}
               initial={{ opacity: 0, y: 20 }}
@@ -237,9 +236,8 @@ export default function AdminMenuPage() {
                   {item.food_type.replace('_', ' ')}
                 </div>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </AnimatePresence>
       </div>
 
       {filteredItems.length === 0 && (
@@ -251,15 +249,10 @@ export default function AdminMenuPage() {
       )}
 
       {/* Item Modal */}
-      <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setIsModalOpen(false)} className="absolute inset-0 bg-stone-900/60 backdrop-blur-md" />
-            <motion.div 
-              initial={{ scale: 0.9, opacity: 0, y: 40 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 40 }}
-              transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            <div onClick={() => setIsModalOpen(false)} className="absolute inset-0 bg-stone-900/60 backdrop-blur-md" />
+            <div 
               className="relative bg-white w-full max-w-2xl rounded-[3rem] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
             >
               <form onSubmit={handleSubmit} className="flex flex-col h-full">
@@ -378,10 +371,10 @@ export default function AdminMenuPage() {
                   </button>
                 </div>
               </form>
-            </motion.div>
+            </div>
           </div>
         )}
-      </AnimatePresence>
     </div>
+    </main>
   )
 }

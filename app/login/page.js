@@ -18,19 +18,33 @@ function LoginForm() {
   const error = searchParams.get('error')
   const { data: session } = useSession()
 
+  let callbackUrl = searchParams.get('callbackUrl')
+  // Sanitize callbackUrl: remove accidental leading dots, normalize localhost hostnames
+  if (callbackUrl) {
+    // Strip leading dots which would create relative paths like '.admin'
+    callbackUrl = callbackUrl.replace(/^\.+/, '')
+    // If it now starts with no slash but looks like a path, ensure leading '/'
+    if (!callbackUrl.startsWith('/') && callbackUrl.match(/^([a-zA-Z0-9_-]+)(\?|$)/)) {
+      callbackUrl = '/' + callbackUrl
+    }
+  }
+
   // Redirect after session updates
   useEffect(() => {
     if (session?.user?.role) {
-      const callbackUrl = searchParams.get('callbackUrl')
       if (callbackUrl) {
         try {
-          if (callbackUrl.includes('localhost:3000')) {
-            const urlMatch = callbackUrl.split('localhost:3000')[1]
-            if (urlMatch) {
-              router.push(urlMatch)
-              return
-            }
-          }
+              // Handle localhost with any port
+              if (callbackUrl.includes('localhost')) {
+                try {
+                  const url = new URL(callbackUrl)
+                  if (url.origin === window.location.origin) {
+                    router.push(url.pathname + url.search)
+                    return
+                  }
+                } catch {}
+              }
+
           const url = new URL(callbackUrl)
           if (url.origin === window.location.origin) {
             router.push(url.pathname + url.search)
@@ -52,8 +66,6 @@ function LoginForm() {
     }
   }, [session?.user?.role, searchParams, router])
 
-  const callbackUrl = searchParams.get('callbackUrl')
-
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
@@ -62,7 +74,7 @@ function LoginForm() {
         email,
         password,
         redirect: false,
-        callbackUrl: callbackUrl || (session?.user?.role === 'ADMIN' ? '/admin' : '/staff'),
+            callbackUrl: callbackUrl || (session?.user?.role === 'ADMIN' ? '/admin' : '/staff'),
       })
       setLoading(false)
       if (res?.error) {
@@ -73,18 +85,20 @@ function LoginForm() {
       toast.success('Logged in!')
 
       if (res?.url) {
-        const target = res.url
+            let target = res.url
         try {
-          const url = new URL(target)
-          if (url.origin === window.location.origin) {
-            router.push(url.pathname + url.search)
-            return
-          }
+              const url = new URL(target)
+              if (url.origin === window.location.origin) {
+                router.push(url.pathname + url.search)
+                return
+              }
         } catch {
-          if (target.startsWith('/')) {
-            router.push(target)
-            return
-          }
+              // sanitize target similar to callbackUrl
+              target = target.replace(/^\.+/, '')
+              if (target.startsWith('/')) {
+                router.push(target)
+                return
+              }
         }
       }
 
