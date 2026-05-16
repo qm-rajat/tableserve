@@ -7,7 +7,7 @@ import { FiLogOut, FiClipboard, FiClock, FiCoffee, FiChevronRight } from 'react-
 import { MdTableRestaurant } from 'react-icons/md'
 
 export default function StaffNav() {
-  const { data: session } = useSession()
+  const { data: session } = useSession() || {}
   const pathname = usePathname()
 
   return (
