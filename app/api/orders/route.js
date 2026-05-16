@@ -17,7 +17,7 @@ export async function GET(req) {
         table:tables(id, number, location_label, capacity),
         order_items(
           id, quantity, unit_price,
-          menu_item:menu_items(id, name, food_type)
+          menu_item:menu_items(id, name, price, food_type)
         )
       `)
       .order('created_at', { ascending: false })

@@ -1,9 +1,9 @@
 'use client'
 // app/login/page.js
 import { useState } from 'react'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { Suspense } from 'react'
+import { Suspense, useEffect } from 'react'
 import { MdTableRestaurant } from 'react-icons/md'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import toast from 'react-hot-toast'
@@ -16,21 +16,14 @@ function LoginForm() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const error = searchParams.get('error')
+  const { data: session } = useSession()
 
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    setLoading(true)
-    try {
-      const res = await signIn('credentials', { email, password, redirect: false })
-      setLoading(false)
-      if (res?.error) {
-        toast.error('Invalid email or password')
-      } else if (res?.ok) {
-        toast.success('Logged in!')
-        const callbackUrl = searchParams.get('callbackUrl')
-        if (callbackUrl) {
-          // If the URL contains localhost:3000 but the user is on AIS external domain, 
-          // we should extract the path and redirect relatively.
+  // Redirect after session updates
+  useEffect(() => {
+    if (session?.user?.role) {
+      const callbackUrl = searchParams.get('callbackUrl')
+      if (callbackUrl) {
+        try {
           if (callbackUrl.includes('localhost:3000')) {
             const urlMatch = callbackUrl.split('localhost:3000')[1]
             if (urlMatch) {
@@ -38,21 +31,38 @@ function LoginForm() {
               return
             }
           }
-          
-          try {
-            const url = new URL(callbackUrl)
-            if (url.origin === window.location.origin) {
-              router.push(url.pathname + url.search)
-              return
-            }
-          } catch {
-            if (callbackUrl.startsWith('/')) {
-              router.push(callbackUrl)
-              return
-            }
+          const url = new URL(callbackUrl)
+          if (url.origin === window.location.origin) {
+            router.push(url.pathname + url.search)
+            return
+          }
+        } catch (e) {
+          if (callbackUrl.startsWith('/')) {
+            router.push(callbackUrl)
+            return
           }
         }
+      }
+      // Route based on role
+      if (session.user.role === 'ADMIN') {
+        router.push('/admin')
+      } else {
         router.push('/staff')
+      }
+    }
+  }, [session?.user?.role, searchParams, router])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    try {
+      const res = await signIn('credentials', { email, password, redirect: false })
+      if (res?.error) {
+        setLoading(false)
+        toast.error('Invalid email or password')
+      } else if (res?.ok) {
+        toast.success('Logged in!')
+        // Session will be updated, useEffect will handle redirect
       }
     } catch (err) {
       setLoading(false)

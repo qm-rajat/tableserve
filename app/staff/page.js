@@ -155,7 +155,9 @@ export default function StaffDashboard() {
                         </span>
                         <span className="text-sm font-bold text-stone-700">{item.menu_item?.name}</span>
                       </div>
-                      <span className="text-xs text-stone-400">₹{item.menu_item?.price * item.quantity}</span>
+                    <span className="text-xs text-stone-400">
+                      ₹{((item.menu_item?.price || item.unit_price || 0) * item.quantity).toFixed(2)}
+                    </span>
                     </div>
                   ))}
                   {order.notes && (
