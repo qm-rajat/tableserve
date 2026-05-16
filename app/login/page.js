@@ -1,7 +1,7 @@
 'use client'
 // app/login/page.js
 import { useState } from 'react'
-import { signIn, useSession } from 'next-auth/react'
+import { signIn, useSession, getSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { Suspense, useEffect } from 'react'
 import { MdTableRestaurant } from 'react-icons/md'
@@ -57,12 +57,47 @@ function LoginForm() {
     setLoading(true)
     try {
       const res = await signIn('credentials', { email, password, redirect: false })
+      setLoading(false)
       if (res?.error) {
-        setLoading(false)
         toast.error('Invalid email or password')
-      } else if (res?.ok) {
+        return
+      }
+
+      if (res?.ok) {
         toast.success('Logged in!')
-        // Session will be updated, useEffect will handle redirect
+
+        const callbackUrl = searchParams.get('callbackUrl')
+        if (callbackUrl) {
+          if (callbackUrl.includes('localhost:3000')) {
+            const urlMatch = callbackUrl.split('localhost:3000')[1]
+            if (urlMatch) {
+              router.push(urlMatch)
+              return
+            }
+          }
+
+          try {
+            const url = new URL(callbackUrl)
+            if (url.origin === window.location.origin) {
+              router.push(url.pathname + url.search)
+              return
+            }
+          } catch {
+            if (callbackUrl.startsWith('/')) {
+              router.push(callbackUrl)
+              return
+            }
+          }
+        }
+
+        // Immediately fetch session and redirect by role as a fallback
+        const sess = await getSession()
+        if (sess?.user?.role === 'ADMIN') {
+          router.push('/admin')
+        } else {
+          router.push('/staff')
+        }
+        return
       }
     } catch (err) {
       setLoading(false)
