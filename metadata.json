@@ -1,0 +1,6 @@
+{
+  "name": "TableServe",
+  "description": "Smart cafe ordering system with UPI payments, live order tracking, and a beautiful customer menu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["realtime-notifications", "image-upload"]
+}

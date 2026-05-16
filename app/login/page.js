@@ -1,51 +1,63 @@
 'use client'
 // app/login/page.js
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import { MdTableRestaurant } from 'react-icons/md'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
 import toast from 'react-hot-toast'
-
-const AUTH_ERROR_MESSAGES = {
-  CredentialsSignin: 'Invalid email or password.',
-  AccessDenied: 'You do not have access to this application.',
-}
 
 function LoginForm() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [showPass, setShowPass] = useState(false)
   const [loading, setLoading] = useState(false)
-  const [formError, setFormError] = useState('')
   const router = useRouter()
   const searchParams = useSearchParams()
-  const callbackUrl = searchParams.get('callbackUrl') ?? '/staff'
   const error = searchParams.get('error')
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    setFormError('')
-
-    const res = await signIn('credentials', {
-      redirect: false,
-      email,
-      password,
-      callbackUrl,
-    })
-
-    setLoading(false)
-
-    if (res?.error) {
-      const message = AUTH_ERROR_MESSAGES[res.error] || res.error || 'Invalid email or password.'
-      setFormError(message)
-      toast.error(message)
-      return
+    try {
+      const res = await signIn('credentials', { email, password, redirect: false })
+      setLoading(false)
+      if (res?.error) {
+        toast.error('Invalid email or password')
+      } else if (res?.ok) {
+        toast.success('Logged in!')
+        const callbackUrl = searchParams.get('callbackUrl')
+        if (callbackUrl) {
+          // If the URL contains localhost:3000 but the user is on AIS external domain, 
+          // we should extract the path and redirect relatively.
+          if (callbackUrl.includes('localhost:3000')) {
+            const urlMatch = callbackUrl.split('localhost:3000')[1]
+            if (urlMatch) {
+              router.push(urlMatch)
+              return
+            }
+          }
+          
+          try {
+            const url = new URL(callbackUrl)
+            if (url.origin === window.location.origin) {
+              router.push(url.pathname + url.search)
+              return
+            }
+          } catch {
+            if (callbackUrl.startsWith('/')) {
+              router.push(callbackUrl)
+              return
+            }
+          }
+        }
+        router.push('/staff')
+      }
+    } catch (err) {
+      setLoading(false)
+      toast.error('An unexpected error occurred')
     }
-
-    toast.success('Logged in!')
-    router.push(callbackUrl)
   }
 
   return (
@@ -63,11 +75,6 @@ function LoginForm() {
           {error === 'unauthorized' && (
             <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl p-3 mb-4">
               You don't have permission to access that page.
-            </div>
-          )}
-          {formError && (
-            <div className="bg-red-50 border border-red-200 text-red-600 text-sm rounded-xl p-3 mb-4">
-              {formError}
             </div>
           )}
 
@@ -117,9 +124,5 @@ function LoginForm() {
 }
 
 export default function LoginPage() {
-  return (
-    <Suspense fallback={null}>
-      <LoginForm />
-    </Suspense>
-  )
+  return <Suspense fallback={null}><LoginForm /></Suspense>
 }

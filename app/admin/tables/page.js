@@ -10,7 +10,17 @@ export default function AdminTables() {
   const [editing,  setEditing]  = useState(null)
   const [form,     setForm]     = useState({ number: '', capacity: '', locationLabel: '' })
 
-  const fetch_ = () => fetch('/api/tables').then(r => r.json()).then(setTables)
+  const fetch_ = async () => {
+    try {
+      const res = await fetch('/api/tables')
+      if (!res.ok) throw new Error('Failed to fetch tables')
+      const data = await res.json()
+      setTables(Array.isArray(data) ? data : [])
+    } catch (err) {
+      console.error('Fetch tables error:', err)
+      toast.error('Could not load tables')
+    }
+  }
   useEffect(() => { fetch_() }, [])
 
   const openEdit = (t) => { setEditing(t.id); setForm({ number: t.number, capacity: t.capacity, locationLabel: t.location_label || '' }); setShowForm(true) }

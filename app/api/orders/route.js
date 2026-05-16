@@ -3,34 +3,38 @@ import { supabaseAdmin } from '@/lib/supabase'
 import { NextResponse } from 'next/server'
 
 export async function GET(req) {
-  const { searchParams } = new URL(req.url)
-  const status    = searchParams.get('status')
-  const tableId   = searchParams.get('tableId')
-  const delivered = searchParams.get('delivered')
-  const limit     = parseInt(searchParams.get('limit') || '50')
+  try {
+    const { searchParams } = new URL(req.url)
+    const status    = searchParams.get('status')
+    const tableId   = searchParams.get('tableId')
+    const delivered = searchParams.get('delivered')
+    const limit     = parseInt(searchParams.get('limit') || '50')
 
-  let query = supabaseAdmin
-    .from('orders')
-    .select(`
-      *,
-      table:tables(id, number, location_label, capacity),
-      order_items(
-        id, quantity, unit_price,
-        menu_item:menu_items(id, name, food_type)
-      )
-    `)
-    .order('created_at', { ascending: false })
-    .limit(limit)
+    let query = supabaseAdmin
+      .from('orders')
+      .select(`
+        *,
+        table:tables(id, number, location_label, capacity),
+        order_items(
+          id, quantity, unit_price,
+          menu_item:menu_items(id, name, food_type)
+        )
+      `)
+      .order('created_at', { ascending: false })
+      .limit(limit)
 
-  if (status)    query = query.eq('payment_status', status)
-  if (tableId)   query = query.eq('table_id', tableId)
-  if (delivered !== null && delivered !== '') {
-    query = query.eq('is_delivered', delivered === 'true')
+    if (status)    query = query.eq('payment_status', status)
+    if (tableId)   query = query.eq('table_id', tableId)
+    if (delivered !== null && delivered !== '') {
+      query = query.eq('is_delivered', delivered === 'true')
+    }
+
+    const { data, error } = await query
+    if (error) return NextResponse.json({ error: error.message }, { status: 500 })
+    return NextResponse.json(data)
+  } catch (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 })
   }
-
-  const { data, error } = await query
-  if (error) return NextResponse.json({ error: error.message }, { status: 500 })
-  return NextResponse.json(data)
 }
 
 export async function POST(req) {

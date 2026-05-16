@@ -35,6 +35,7 @@ CREATE TABLE tables (
 CREATE TABLE categories (
   id         TEXT PRIMARY KEY DEFAULT gen_random_uuid()::TEXT,
   name       TEXT UNIQUE NOT NULL,
+  image_url  TEXT,
   sort_order INTEGER DEFAULT 0,
   created_at TIMESTAMPTZ DEFAULT NOW()
 );

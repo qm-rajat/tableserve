@@ -4,6 +4,13 @@ import { NextResponse } from 'next/server'
 
 export async function POST(req) {
   try {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY
+    
+    if (!url || !key) {
+      return NextResponse.json({ error: 'Supabase Storage is not configured. Please add NEXT_PUBLIC_SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY to secrets.' }, { status: 500 })
+    }
+
     const formData = await req.formData()
     const file = formData.get('file')
     if (!file) return NextResponse.json({ error: 'No file provided' }, { status: 400 })
@@ -26,6 +33,6 @@ export async function POST(req) {
     return NextResponse.json({ url: data.publicUrl })
   } catch (err) {
     console.error('Upload error:', err)
-    return NextResponse.json({ error: 'Upload failed' }, { status: 500 })
+    return NextResponse.json({ error: err.message || 'Upload failed' }, { status: 500 })
   }
 }
