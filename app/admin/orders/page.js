@@ -47,6 +47,35 @@ export default function AdminOrdersPage() {
     return tableNumber.includes(query) || payment.includes(query) || notes.toLowerCase().includes(query)
   })
 
+  const toggleDelivered = async (orderId, current) => {
+    try {
+      await fetch(`/api/orders/${orderId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ isDelivered: !current })
+      })
+      fetchOrders()
+      toast.success('Order updated')
+    } catch (err) {
+      toast.error('Failed to update order')
+    }
+  }
+
+  const markPaid = async (orderId, currentStatus) => {
+    try {
+      const target = currentStatus === 'UPI_PENDING' ? 'PAID_UPI' : 'PAID_OFFLINE'
+      await fetch(`/api/orders/${orderId}`, {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ paymentStatus: target })
+      })
+      fetchOrders()
+      toast.success('Payment status updated')
+    } catch (err) {
+      toast.error('Failed to update payment status')
+    }
+  }
+
   return (
     <main className="p-8 flex-1">
       <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-8">
@@ -137,6 +166,7 @@ export default function AdminOrdersPage() {
                       <div className="text-sm text-stone-500">Notes</div>
                       <div className="mt-2 rounded-2xl bg-stone-50 p-4 text-sm text-stone-600 min-h-[80px]">{order.notes || 'No notes provided'}</div>
                     </div>
+
                     <div className="flex items-center justify-between gap-4 text-sm text-stone-500">
                       <div>
                         <p className="font-semibold text-stone-900">Created</p>
@@ -146,6 +176,15 @@ export default function AdminOrdersPage() {
                         <FiFilter />
                         <span>Order details</span>
                       </div>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button type="button" onClick={() => toggleDelivered(order.id, order.is_delivered)} className="btn-sm">
+                        {order.is_delivered ? 'Mark Undelivered' : 'Mark Delivered'}
+                      </button>
+                      <button type="button" onClick={() => markPaid(order.id, order.payment_status)} className="btn-sm">
+                        Mark Paid
+                      </button>
                     </div>
                   </div>
                 </div>
