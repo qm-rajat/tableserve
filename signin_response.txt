@@ -1,0 +1,409 @@
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+set-cookie: next-auth.callback-url=http%3A%2F%2Flocalhost%3A3000%2Fadmin; Path=/; HttpOnly; SameSite=Lax
+Date: Sat, 16 May 2026 12:34:52 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:53 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:54 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:55 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:56 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:57 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+
+HTTP/1.1 302 Found
+vary: RSC, Next-Router-State-Tree, Next-Router-Prefetch, Next-Url
+location: http://localhost:3000/api/auth/signin?csrf=true
+Date: Sat, 16 May 2026 12:34:57 GMT
+Connection: keep-alive
+Keep-Alive: timeout=5
+Transfer-Encoding: chunked
+

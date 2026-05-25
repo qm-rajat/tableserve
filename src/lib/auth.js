@@ -3,6 +3,8 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 import bcrypt from 'bcryptjs'
 import { supabaseAdmin } from './supabase'
 
+const isProd = process.env.NODE_ENV === 'production' || (process.env.NEXTAUTH_URL && process.env.NEXTAUTH_URL.startsWith('https'))
+
 export const authOptions = {
   providers: [
     CredentialsProvider({
@@ -42,20 +44,29 @@ export const authOptions = {
   ],
   callbacks: {
     async jwt({ token, user }) {
+      // Persist role/id across requests.
       if (user) {
         token.role = user.role
-        token.id   = user.id
+        token.id = user.id
       }
+
+      // Extra hardening: if role is present in user-like payloads,
+      // keep it on the JWT even if `user` isn't provided (edge cases in middleware).
+      if (!token.role && user?.role) token.role = user.role
+      if (!token.id && user?.id) token.id = user.id
+
       return token
     },
     async session({ session, token }) {
       if (token) {
+        session.user = session.user || {}
         session.user.role = token.role
-        session.user.id   = token.id
+        session.user.id = token.id
       }
       return session
     },
     async redirect({ url, baseUrl }) {
+
       // Allows relative callback URLs
       if (url.startsWith("/")) return `${baseUrl}${url}`
       
@@ -78,9 +89,9 @@ export const authOptions = {
       name: `next-auth.session-token`,
       options: {
         httpOnly: true,
-        sameSite: 'none',
+        sameSite: isProd ? 'none' : 'lax',
         path: '/',
-        secure: true,
+        secure: isProd,
       },
     },
   },
