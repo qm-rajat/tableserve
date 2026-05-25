@@ -33,7 +33,7 @@ export default function AdminDashboard() {
       <div className="flex items-center justify-between mb-8">
         <div>
           <h1 className="text-3xl font-display font-black text-stone-800">Admin Dashboard</h1>
-          <p className="text-stone-500 text-sm">Overview and quick links</p>
+          <p className="text-stone-500 text-sm">Dashboard overview</p>
         </div>
       </div>
 
@@ -59,16 +59,6 @@ export default function AdminDashboard() {
           <div className="text-2xl font-black mt-2">{loading ? '…' : counts.orders}</div>
         </Link>
       </div>
-
-      <section className="bg-white rounded-2xl p-6 shadow-sm">
-        <h2 className="font-bold text-stone-800 mb-3">Quick Actions</h2>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/admin/menu" className="btn-primary">Manage Menu</Link>
-          <Link href="/admin/categories" className="btn-outline">Manage Categories</Link>
-          <Link href="/admin/staff" className="btn-outline">Manage Staff</Link>
-          <Link href="/admin/tables" className="btn-outline">Manage Tables</Link>
-        </div>
-      </section>
     </main>
   )
 }

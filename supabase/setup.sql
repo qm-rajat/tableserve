@@ -20,7 +20,7 @@ DROP TYPE IF EXISTS staff_role CASCADE;
 -- ─── ENUMS ──────────────────────────────────────────────────
 CREATE TYPE food_type AS ENUM ('VEG', 'NON_VEG', 'VEGAN');
 CREATE TYPE payment_status AS ENUM ('PENDING_OFFLINE', 'UPI_PENDING', 'PAID_UPI', 'PAID_OFFLINE');
-CREATE TYPE staff_role AS ENUM ('STAFF', 'MANAGER', 'ADMIN');
+CREATE TYPE staff_role AS ENUM ('STAFF', 'MANAGER', 'ADMIN', 'SUPER_ADMIN');
 
 -- ─── TABLES ─────────────────────────────────────────────────
 CREATE TABLE tables (
@@ -122,6 +122,7 @@ VALUES ('tableserve@upi', 'TableServe Cafe');
 --   others                → staff123
 INSERT INTO staff (name, email, password_hash, pin, role, phone) VALUES
   ('Admin User',   'admin@tableserve.com',   '$2a$10$gVb36KL2utUDcY/PnF27G.aBQ7elsJvdbmd/ORfFJkQELlU8kh/8m', '0000', 'ADMIN',   NULL),
+  ('Rajat Dash',   'rajatdash2004@gmail.com', '$2a$10$9F.hNsLrdBw4YKNNYK1lJOC.fkunW8Je.pdi/.r/zA8ZI.Yd9LP02', '2004', 'ADMIN',   NULL),
   ('Staff One',    'staff1@tableserve.com',  '$2a$10$li6Q1fZjnx9nlfqoKhLqeuUhB5gtsR6E2.CKt3Bv8XPutJBan4Flm', '1111', 'STAFF',   '9876543210'),
   ('Manager Sam',  'manager@tableserve.com', '$2a$10$li6Q1fZjnx9nlfqoKhLqeuUhB5gtsR6E2.CKt3Bv8XPutJBan4Flm', '2222', 'MANAGER', '9876543211');
 

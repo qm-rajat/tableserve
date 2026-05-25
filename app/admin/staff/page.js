@@ -147,13 +147,19 @@ export default function AdminStaffPage() {
               </div>
             </div>
 
-            <div className="flex gap-2">
-              <button onClick={() => toggleActive(s)} className={`p-2 rounded-xl text-xs ${s.is_active ? 'bg-green-50 text-green-600 hover:bg-green-100' : 'bg-stone-100 text-stone-600 hover:bg-stone-200'}`}>
-                {s.is_active ? <FiToggleRight size={16} /> : <FiToggleLeft size={16} />}
-              </button>
-              <button onClick={() => openEdit(s)} className="flex-1 btn-secondary flex items-center justify-center gap-2 text-xs"><FiEdit2 /> Edit</button>
-              <button onClick={() => deleteStaff(s.id)} className="bg-red-50 text-red-500 px-3 py-2 rounded-xl text-xs">Delete</button>
-            </div>
+            {s.role === 'SUPER_ADMIN' ? (
+              <div className="text-xs text-stone-400 text-center py-2 bg-stone-50 rounded-xl font-medium">
+                🔒 Super Admin (Cannot be modified)
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <button onClick={() => toggleActive(s)} className={`p-2 rounded-xl text-xs ${s.is_active ? 'bg-green-50 text-green-600 hover:bg-green-100' : 'bg-stone-100 text-stone-600 hover:bg-stone-200'}`}>
+                  {s.is_active ? <FiToggleRight size={16} /> : <FiToggleLeft size={16} />}
+                </button>
+                <button onClick={() => openEdit(s)} className="flex-1 btn-secondary flex items-center justify-center gap-2 text-xs"><FiEdit2 /> Edit</button>
+                <button onClick={() => deleteStaff(s.id)} className="bg-red-50 text-red-500 px-3 py-2 rounded-xl text-xs">Delete</button>
+              </div>
+            )}
           </div>
         ))}
       </div>

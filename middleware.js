@@ -11,9 +11,9 @@ export default withAuth(
     const token = req.nextauth.token
     const role = getRoleFromToken(token)
 
-    // Admin routes — ADMIN role only
+    // Admin routes — ADMIN, SUPER_ADMIN
     if (pathname.startsWith('/admin')) {
-      if (role !== 'ADMIN') {
+      if (!['ADMIN', 'SUPER_ADMIN'].includes(role)) {
         const url = req.nextUrl.clone()
         url.pathname = '/login'
         url.search = '?error=unauthorized'
@@ -21,9 +21,9 @@ export default withAuth(
       }
     }
 
-    // Staff routes — STAFF, MANAGER, ADMIN
+    // Staff routes — STAFF, MANAGER, ADMIN, SUPER_ADMIN
     if (pathname.startsWith('/staff')) {
-      if (!['STAFF', 'MANAGER', 'ADMIN'].includes(role)) {
+      if (!['STAFF', 'MANAGER', 'ADMIN', 'SUPER_ADMIN'].includes(role)) {
         const url = req.nextUrl.clone()
         url.pathname = '/login'
         url.search = '?error=unauthorized'

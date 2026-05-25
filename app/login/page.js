@@ -36,7 +36,7 @@ function LoginForm() {
       }
     }
 
-    if (session.user.role === 'ADMIN') router.push('/admin')
+    if (['ADMIN', 'SUPER_ADMIN'].includes(session.user.role)) router.push('/admin')
     else router.push('/staff')
   }, [session, router, searchParams])
 
@@ -61,7 +61,7 @@ function LoginForm() {
     const sessionRes = await fetch('/api/auth/session')
     const session    = await sessionRes.json()
 
-    if (session?.user?.role === 'ADMIN') {
+    if (['ADMIN', 'SUPER_ADMIN'].includes(session?.user?.role)) {
       router.push('/admin')
     } else {
       router.push('/staff')

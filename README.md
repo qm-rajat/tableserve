@@ -597,3 +597,4 @@ Paste the output hash into the SQL file's staff INSERT and re-run.
 ---
 
 *Built with Next.js 14 + Supabase + NextAuth.js + Tailwind CSS*
+
