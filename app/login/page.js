@@ -1,7 +1,7 @@
 'use client'
 '// app/login/page.js'
 import { useState, Suspense } from 'react'
-import { signIn } from 'next-auth/react'
+import { signIn, useSession } from 'next-auth/react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { MdTableRestaurant } from 'react-icons/md'
 import { FiEye, FiEyeOff } from 'react-icons/fi'
@@ -15,6 +15,30 @@ function LoginForm() {
   const router       = useRouter()
   const searchParams = useSearchParams()
   const error        = searchParams.get('error')
+  const { data: session } = useSession()
+
+  // If already authenticated, redirect immediately
+  useEffect(() => {
+    if (!session?.user) return
+    const callback = searchParams.get('callbackUrl')
+    if (callback) {
+      try {
+        const url = new URL(callback)
+        if (url.origin === window.location.origin) {
+          router.push(url.pathname + url.search)
+          return
+        }
+      } catch {
+        if (callback.startsWith('/')) {
+          router.push(callback)
+          return
+        }
+      }
+    }
+
+    if (session.user.role === 'ADMIN') router.push('/admin')
+    else router.push('/staff')
+  }, [session, router, searchParams])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
