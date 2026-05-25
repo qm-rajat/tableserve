@@ -84,17 +84,6 @@ export const authOptions = {
       return baseUrl
     }
   },
-  cookies: {
-    sessionToken: {
-      name: `next-auth.session-token`,
-      options: {
-        httpOnly: true,
-        sameSite: isProd ? 'none' : 'lax',
-        path: '/',
-        secure: isProd,
-      },
-    },
-  },
   pages:   { signIn: '/login' },
   session: { strategy: 'jwt' },
   secret:  process.env.NEXTAUTH_SECRET,
