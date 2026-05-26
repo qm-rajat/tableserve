@@ -108,7 +108,7 @@ export default function StaffDashboard() {
           <div className="w-20 h-20 bg-stone-50 rounded-full flex items-center justify-center mx-auto mb-6">
             <MdTableRestaurant className="text-4xl text-stone-200" />
           </div>
-          <h2 className="text-2xl font-display font-black text-stone-400">Zen Kitchen</h2>
+          <h2 className="text-2xl font-display font-black text-stone-400">TableServe</h2>
           <p className="text-stone-300 text-sm max-w-xs mx-auto mt-2">No pending orders matching your filters at the moment.</p>
         </div>
       ) : (

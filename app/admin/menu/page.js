@@ -250,22 +250,22 @@ export default function AdminMenuPage() {
 
       {/* Item Modal */}
         {isModalOpen && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4">
             <div onClick={() => setIsModalOpen(false)} className="absolute inset-0 bg-stone-900/60 backdrop-blur-md" />
             <div 
-              className="relative bg-white w-full max-w-2xl rounded-[3rem] shadow-2xl overflow-hidden flex flex-col max-h-[95vh]"
+              className="relative bg-white w-full max-w-4xl rounded-[3rem] shadow-2xl overflow-hidden flex flex-col h-[95vh] max-h-[95vh]"
             >
               <form onSubmit={handleSubmit} className="flex flex-col h-full">
-                <div className="p-8 sm:p-10 border-b border-stone-100 flex items-center justify-between bg-white z-10 shrink-0">
-                  <div>
-                    <h2 className="text-3xl font-display font-black text-stone-800">{formData.id ? 'Edit Secret Recipe' : 'Add New Delight'}</h2>
+                <div className="p-6 sm:p-10 border-b border-stone-100 flex items-center justify-between bg-white z-10 shrink-0 gap-4">
+                  <div className="min-w-0">
+                    <h2 className="text-2xl sm:text-3xl font-display font-black text-stone-800">{formData.id ? 'Edit Secret Recipe' : 'Add New Delight'}</h2>
                     <p className="text-stone-400 text-xs">Craft the perfect experience for your customers</p>
                   </div>
-                  <button type="button" onClick={() => setIsModalOpen(false)} className="p-4 bg-stone-50 rounded-2xl hover:bg-stone-100 transition-all text-stone-400 hover:text-stone-800"><FiX size={20} /></button>
+                  <button type="button" onClick={() => setIsModalOpen(false)} className="p-4 bg-stone-50 rounded-2xl hover:bg-stone-100 transition-all text-stone-400 hover:text-stone-800 flex-shrink-0"><FiX size={20} /></button>
                 </div>
 
-                <div className="p-8 sm:p-10 overflow-y-auto space-y-10">
-                  <div className="grid grid-cols-1 md:grid-cols-5 gap-10">
+                <div className="p-6 sm:p-10 overflow-y-auto space-y-8 sm:space-y-10">
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-6 sm:gap-10">
                     {/* Image Column */}
                     <div className="md:col-span-2">
                       <label className="text-[10px] font-black uppercase tracking-[0.2em] text-stone-400 block mb-3">Item Visual</label>
@@ -363,9 +363,9 @@ export default function AdminMenuPage() {
                   </div>
                 </div>
 
-                <div className="p-8 sm:p-10 bg-stone-50 flex items-center justify-center sm:justify-end gap-6 shrink-0 mt-auto border-t border-stone-100">
+                <div className="p-6 sm:p-10 bg-stone-50 flex flex-col-reverse sm:flex-row items-center justify-between gap-4 sm:gap-6 shrink-0 mt-auto border-t border-stone-100">
                   <button type="button" onClick={() => setIsModalOpen(false)} className="text-xs font-black uppercase tracking-widest text-stone-400 hover:text-stone-600 transition-all">Dismiss</button>
-                  <button type="submit" disabled={uploading} className="btn-primary min-w-[200px] flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed text-base py-5">
+                  <button type="submit" disabled={uploading} className="btn-primary w-full sm:w-auto sm:min-w-[200px] flex items-center justify-center gap-3 disabled:opacity-60 disabled:cursor-not-allowed text-base py-4 sm:py-5">
                     {formData.id ? <FiCheck size={20} /> : <FiPlus size={20} />}
                     <span className="font-black uppercase tracking-widest">{formData.id ? 'Save Changes' : 'Publish Item'}</span>
                   </button>

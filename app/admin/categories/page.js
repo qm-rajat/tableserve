@@ -128,53 +128,81 @@ export default function AdminCategories() {
             <h1 className="text-3xl font-black text-stone-900">Categories</h1>
             <p className="text-sm text-stone-500">Manage category names, images, and ordering.</p>
           </div>
-          <button type="button" onClick={openNew} className="btn-primary">
-            <FiPlus /> Add Category
+          <button type="button" onClick={openNew} className="btn-primary flex items-center gap-2">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+              className="shrink-0"
+            >
+              <path
+                d="M12 5V19"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+              <path
+                d="M5 12H19"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+              />
+            </svg>
+            <span>Add Category</span>
           </button>
         </div>
 
         {showForm && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 p-4">
-            <form onSubmit={saveCategory} className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
-              <div className="flex items-center justify-between mb-6">
-                <div>
-                  <h2 className="text-xl font-bold text-stone-900">{editing ? 'Edit Category' : 'New Category'}</h2>
-                  <p className="text-sm text-stone-500">Update category details for the menu.</p>
-                </div>
-                <button type="button" onClick={closeForm} className="text-stone-400 hover:text-stone-600">Cancel</button>
-              </div>
-
-              <div className="space-y-4">
-                <div>
-                  <label className="label">Name</label>
-                  <input value={name} onChange={(e) => setName(e.target.value)} className="input w-full" required />
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+            <div onClick={closeForm} className="absolute inset-0 bg-black/40" />
+            <div className="relative w-full max-w-md rounded-3xl bg-white shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+              <form onSubmit={saveCategory} className="flex flex-col h-full">
+                <div className="p-6 border-b border-stone-100 flex items-center justify-between bg-white z-10 shrink-0">
+                  <div className="min-w-0">
+                    <h2 className="text-xl font-bold text-stone-900 truncate">{editing ? 'Edit Category' : 'New Category'}</h2>
+                    <p className="text-sm text-stone-500 truncate">Update category details for the menu.</p>
+                  </div>
+                  <button type="button" onClick={closeForm} className="text-stone-400 hover:text-stone-600 flex-shrink-0">Cancel</button>
                 </div>
 
-                <div>
-                  <label className="label">Image</label>
-                  <div className="relative rounded-2xl border border-stone-200 bg-stone-50 p-4 text-center">
-                    {imageUrl ? (
-                      <>
-                        <Image src={imageUrl} alt="Category" fill className="object-cover rounded-2xl" />
-                        <button type="button" onClick={() => setImageUrl('')} className="absolute top-3 right-3 rounded-full bg-black/50 p-2 text-white">
-                          <FiX size={14} />
-                        </button>
-                      </>
-                    ) : (
-                      <label className="cursor-pointer text-stone-500">
-                        Upload image
-                        <input type="file" accept="image/*" onChange={handleImageUpload} className="sr-only" disabled={uploading} />
-                      </label>
-                    )}
+                <div className="p-4 overflow-y-auto flex-1 space-y-4">
+                  <div>
+                    <label className="label">Name</label>
+                    <input value={name} onChange={(e) => setName(e.target.value)} className="input w-full" required />
+                  </div>
+
+                  <div>
+                    <label className="label">Image</label>
+                    <div className="relative w-full h-[300px] rounded-2xl border border-stone-200 bg-stone-50 overflow-hidden">
+                      {imageUrl ? (
+                        <>
+                          <Image src={imageUrl} alt="Category" fill className="object-cover" />
+                          <button type="button" onClick={() => setImageUrl('')} className="absolute top-3 right-3 rounded-full bg-black/50 p-2 text-white hover:bg-black/70 z-10">
+                            <FiX size={14} />
+                          </button>
+                        </>
+                      ) : (
+                        <label className="cursor-pointer h-full flex items-center justify-center text-stone-500 hover:text-stone-700 hover:bg-stone-100 transition">
+                          <div className="text-center">
+                            <FiImage size={32} className="mx-auto mb-2 text-stone-400" />
+                            <span>{uploading ? 'Uploading...' : 'Upload image'}</span>
+                          </div>
+                          <input type="file" accept="image/*" onChange={handleImageUpload} className="sr-only" disabled={uploading} />
+                        </label>
+                      )}
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex gap-3">
+                <div className="p-4 flex gap-3 bg-white shrink-0 border-t border-stone-100">
                   <button type="button" onClick={closeForm} className="btn-secondary flex-1">Cancel</button>
                   <button type="submit" disabled={uploading} className="btn-primary flex-1">{editing ? 'Save' : 'Create'}</button>
                 </div>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         )}
 

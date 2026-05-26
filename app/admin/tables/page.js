@@ -74,22 +74,40 @@ export default function AdminTables() {
             )}
           </p>
         </div>
-        <div className="flex items-center gap-3">
-          <div className="relative">
+        <div className="flex items-center gap-2">
+          <div className="relative w-full sm:flex-1 sm:max-w-md">
             <FiSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-stone-400" />
-            <input value={query} onChange={e => setQuery(e.target.value)} placeholder="Search by number or location" className="input pl-10 pr-8 h-10" />
-            {query && <button onClick={() => setQuery('')} className="absolute right-2 top-1/2 -translate-y-1/2 text-stone-400"><FiX /></button>}
+            <input
+              value={query}
+              onChange={e => setQuery(e.target.value)}
+              placeholder="Search by number or location"
+              className="input h-10 pl-10 pr-8"
+            />
+            {query && (
+              <button
+                onClick={() => setQuery('')}
+                className="absolute right-2 top-1/2 -translate-y-1/2 text-stone-400 hover:text-stone-600"
+                aria-label="Clear search"
+              >
+                <FiX />
+              </button>
+            )}
           </div>
-          <select value={filterActive} onChange={e => setFilterActive(e.target.value)} className="input h-10">
+
+          <select value={filterActive} onChange={e => setFilterActive(e.target.value)} className="input h-10 w-[140px]">
             <option value="all">All</option>
             <option value="active">Active</option>
             <option value="inactive">Inactive</option>
           </select>
-          <select value={sortOrder} onChange={e => setSortOrder(e.target.value)} className="input h-10">
+
+          <select value={sortOrder} onChange={e => setSortOrder(e.target.value)} className="input h-10 w-[120px]">
             <option value="asc">Number ↑</option>
             <option value="desc">Number ↓</option>
           </select>
-          <button onClick={openNew} className="btn-primary flex items-center gap-2 text-sm"><FiPlus /> Add Table</button>
+
+          <button onClick={openNew} className="btn-primary flex items-center gap-2 text-sm whitespace-nowrap px-3">
+            <FiPlus /> Add Table
+          </button>
         </div>
       </div>
 
